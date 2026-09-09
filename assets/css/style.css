@@ -814,19 +814,10 @@ a:hover { color: var(--accent); }
 body.is-locked { overflow: hidden; }
 
 /* --------------------------------------------------------------------------
-   9. Animace při scrollu
+   9. Omezení pohybu
    -------------------------------------------------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .7s var(--ease), transform .7s var(--ease);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-.reveal.is-visible { opacity: 1; transform: none; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
@@ -841,5 +832,160 @@ body.is-locked { overflow: hidden; }
   .site-header, .hero__bg, .candidate__more, .modal, .site-footer__nav { display: none !important; }
   body { background: #fff; color: #000; }
   .candidate__card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
-  .reveal { opacity: 1; transform: none; }
+}
+
+/* --------------------------------------------------------------------------
+   11. Programová stránka
+   -------------------------------------------------------------------------- */
+.page-hero {
+  position: relative;
+  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(2.5rem, 5vw, 4rem);
+  background:
+    linear-gradient(180deg,
+      color-mix(in oklab, var(--brand-soft) 70%, var(--bg)),
+      var(--bg));
+  border-bottom: 1px solid var(--line);
+}
+.page-hero__lead {
+  margin-top: 1.4rem;
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: var(--step-0);
+  line-height: 1.55;
+}
+
+/* Jméno kandidáta je hlavní nadpis stránky, ostatní text stojí pod ním */
+.page-hero__who {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.page-hero__who .candidate__avatar { width: 3.8rem; height: 3.8rem; font-size: 1.2rem; }
+.page-hero__name {
+  font-size: var(--step-3);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+.page-hero__role {
+  margin-top: .3rem;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+/* Slib — vytažený nad ostatní text, ať ho nikdo nepřehlédne */
+.pledge {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--line));
+  border-left-width: 4px;
+  border-left-color: var(--accent);
+  border-radius: var(--r-lg);
+  background: var(--accent-soft);
+  max-width: 62ch;
+}
+.pledge__title {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.pledge p { margin-top: .8rem; color: var(--ink-soft); line-height: 1.65; }
+.pledge p + p { margin-top: .6rem; }
+
+/* Programové body — pořadí v seznamu nic neznamená, proto žádná čísla
+   ani zvýrazňování jednotlivých bodů. */
+.program {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 62rem;
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.4rem);
+}
+.program__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.15rem;
+  padding: clamp(1.25rem, 2.6vw, 1.9rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.program__mark {
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: .6rem;
+  height: .6rem;
+  margin-top: .55rem;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 16%, transparent);
+}
+.program__title {
+  align-self: start;
+  font-size: var(--step-1);
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+.program__text {
+  grid-column: 2;
+  max-width: 72ch;
+  color: var(--ink-soft);
+  line-height: 1.68;
+}
+@media (max-width: 560px) {
+  /* Na úzkém displeji by osamocená tečka jen zabírala řádek */
+  .program__item { grid-template-columns: 1fr; }
+  .program__mark { display: none; }
+  .program__text { grid-column: 1; }
+}
+
+/* Uzavření stránky — kontakt a cesta zpět */
+.closing {
+  max-width: 62rem;
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+}
+.closing__title { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.2; }
+.closing p { margin-top: .8rem; color: var(--ink-soft); line-height: 1.65; max-width: 58ch; }
+.closing__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+/* Odkaz na program u karty kandidáta */
+.candidate__program {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  align-self: start;
+  margin-top: .5rem;
+  color: var(--brand);
+  font-size: var(--step--1);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+.candidate__program:hover { text-decoration: underline; }
+.candidate__program svg {
+  width: 1em; height: 1em;
+  flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  transition: transform .25s var(--ease);
+}
+.candidate__program:hover svg { transform: translateX(3px); }
+
+@media print {
+  .program__item, .pledge { break-inside: avoid; box-shadow: none; }
+  .closing__actions { display: none !important; }
 }

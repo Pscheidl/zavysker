@@ -8,7 +8,6 @@
 
   const $  = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------------------------------------------------------------- Motiv */
   const themeToggle = $('#theme-toggle');
@@ -45,31 +44,6 @@
   const onScroll = () => header?.classList.toggle('is-stuck', window.scrollY > 8);
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  /* --------------------------------------------------- Odhalování při scrollu */
-  const revealables = $$('.reveal');
-
-  if (reducedMotion || !('IntersectionObserver' in window)) {
-    revealables.forEach((el) => el.classList.add('is-visible'));
-  } else {
-    const revealObserver = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-
-    // Prvky ve stejné skupině se odhalují po sobě (stagger)
-    const groups = new Map();
-    revealables.forEach((el) => {
-      const key = el.parentElement;
-      const idx = groups.get(key) ?? 0;
-      groups.set(key, idx + 1);
-      el.style.setProperty('--reveal-delay', `${Math.min(idx, 5) * 60}ms`);
-      revealObserver.observe(el);
-    });
-  }
 
   /* ------------------------------------------------------- Karty kandidátů
 
