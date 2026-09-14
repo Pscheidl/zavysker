@@ -944,6 +944,14 @@ body.is-locked { overflow: hidden; }
   .program__text { grid-column: 1; }
 }
 
+/* Slovo kandidáta pod programovými body, bez rámečku */
+.program-close {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  max-width: 62ch;
+}
+.program-close p { color: var(--ink-soft); line-height: 1.68; }
+.program-close p + p { margin-top: .8rem; }
+
 /* Uzavření stránky — kontakt a cesta zpět */
 .closing {
   max-width: 62rem;
