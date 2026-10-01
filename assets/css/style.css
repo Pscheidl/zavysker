@@ -1,130 +1,97 @@
-/* ==========================================================================
-   Za Vyskeř — design system
-   Bez závislostí, bez build kroku. Vše laděno tokeny níže.
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. Tokeny
-   -------------------------------------------------------------------------- */
-:root {
-  /* Barvy — světlý režim je výchozí a definuje kompletní paletu */
-  --bg:            #faf8f4;
-  --bg-alt:        #f2eee6;
-  --surface:       #ffffff;
-  --surface-2:     #f6f3ec;
-  --ink:           #16211d;
-  --ink-soft:      #3d4c46;
-  --muted:         #6b7a73;
-  --line:          #e2ddd2;
-
-  --brand:         #14503f;
-  --brand-strong:  #0e3b2e;
-  --brand-soft:    #e6f0eb;
-  --brand-ink:     #ffffff;
-
-  --accent:        #c2762b;
-  --accent-soft:   #fbf0e2;
-
-  --hill-1:        #14503f;
-  --hill-2:        #2c6b55;
-  --hill-3:        #4b8a72;
-  --kaple:         #123f32;
-  --sky-a:         #eef3ee;
-  --sky-b:         #faf8f4;
-
-  --shadow-sm: 0 1px 2px rgb(20 40 33 / .06), 0 2px 8px rgb(20 40 33 / .05);
-  --shadow-md: 0 2px 6px rgb(20 40 33 / .07), 0 12px 30px -8px rgb(20 40 33 / .14);
-  --shadow-lg: 0 4px 12px rgb(20 40 33 / .09), 0 30px 60px -18px rgb(20 40 33 / .26);
-
-  /* Typografie */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Source Serif 4",
-                  "Georgia", "Times New Roman", serif;
-
-  --step--1: clamp(.82rem, .79rem + .14vw, .9rem);
-  --step-0:  clamp(1rem, .96rem + .2vw, 1.09rem);
-  --step-1:  clamp(1.18rem, 1.1rem + .38vw, 1.4rem);
-  --step-2:  clamp(1.45rem, 1.28rem + .8vw, 2rem);
-  --step-3:  clamp(1.9rem, 1.55rem + 1.7vw, 3rem);
-  --step-4:  clamp(2.6rem, 1.9rem + 3.4vw, 5rem);
-
-  /* Rozměry */
-  --shell: 1180px;
-  --gutter: clamp(1.15rem, 4vw, 2.5rem);
-  --r-sm: 10px;
-  --r-md: 16px;
-  --r-lg: 24px;
-  --r-xl: 32px;
-  --header-h: 68px;
-
-  --ease: cubic-bezier(.2, .7, .3, 1);
-  color-scheme: light;
+/* Za Vyskeř. Sdílená typografie a reliéf s projektem obecni-web. */
+@font-face {
+  font-family: Geist;
+  src: url('../fonts/geist.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../fonts/geist-mono.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
-/* Tmavý režim — pouze přepis tokenů */
+:root {
+  color-scheme: light;
+  --bg: #fdfdfd;
+  --bg-alt: #f6f8f6;
+  --surface: #ffffff;
+  --surface-2: #f4f6f4;
+  --ink: #191d1b;
+  --ink-soft: #4c5650;
+  --muted: #66716a;
+  --line: #e4e9e5;
+  --brand: #26734d;
+  --brand-strong: #1c593b;
+  --brand-soft: #edf5ef;
+  --brand-ink: #ffffff;
+  --accent: var(--brand);
+  --accent-soft: var(--brand-soft);
+  --relief: url('../img/relief-vysker-light.png');
+  --shadow-sm: 0 1px 3px rgb(20 40 30 / .04);
+  --shadow-md: 0 8px 24px rgb(20 40 30 / .06);
+  --shadow-lg: 0 24px 72px rgb(20 40 30 / .18);
+  --font-sans: Geist, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: 'Geist Mono', monospace;
+  --step--1: .875rem;
+  --step-0: 1rem;
+  --step-1: clamp(1.1rem, 1rem + .3vw, 1.25rem);
+  --step-2: clamp(1.3rem, 1.15rem + .6vw, 1.65rem);
+  --step-3: clamp(2rem, 1.5rem + 1.7vw, 3rem);
+  --step-4: clamp(2.6rem, 5.5vw, 4.75rem);
+  --shell: 1248px;
+  --gutter: clamp(22px, 4.25vw, 72px);
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --header-h: 76px;
+  --ease: cubic-bezier(.2, .7, .3, 1);
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:           #0a1310;
-    --bg-alt:       #0e1a16;
-    --surface:      #12201b;
-    --surface-2:    #172a23;
-    --ink:          #e9f1ec;
-    --ink-soft:     #c2d1ca;
-    --muted:        #8ba398;
-    --line:         #22362e;
-
-    --brand:        #56d6a4;
-    --brand-strong: #7ce3ba;
-    --brand-soft:   #143027;
-    --brand-ink:    #06211a;
-
-    --accent:       #e9a459;
-    --accent-soft:  #2a1f11;
-
-    --hill-1:       #0f3529;
-    --hill-2:       #144135;
-    --hill-3:       #1b5243;
-    --kaple:        #7fb79e;
-    --sky-a:        #0d1c17;
-    --sky-b:        #0a1310;
-
-    --shadow-sm: 0 1px 2px rgb(0 0 0 / .4);
-    --shadow-md: 0 2px 6px rgb(0 0 0 / .45), 0 14px 34px -10px rgb(0 0 0 / .6);
-    --shadow-lg: 0 4px 12px rgb(0 0 0 / .5), 0 34px 64px -20px rgb(0 0 0 / .75);
     color-scheme: dark;
+    --bg: #121513;
+    --bg-alt: #171c19;
+    --surface: #1a201c;
+    --surface-2: #202822;
+    --ink: #edf2ee;
+    --ink-soft: #bbc6be;
+    --muted: #9caea1;
+    --line: #2d3830;
+    --brand: #85d4a4;
+    --brand-strong: #a2e4bc;
+    --brand-soft: #1e3025;
+    --brand-ink: #10271a;
+    --relief: url('../img/relief-vysker-dark.png');
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / .12);
+    --shadow-md: 0 8px 24px rgb(0 0 0 / .18);
+    --shadow-lg: 0 24px 72px rgb(0 0 0 / .4);
   }
 }
-
 :root[data-theme="dark"] {
-  --bg:           #0a1310;
-  --bg-alt:       #0e1a16;
-  --surface:      #12201b;
-  --surface-2:    #172a23;
-  --ink:          #e9f1ec;
-  --ink-soft:     #c2d1ca;
-  --muted:        #8ba398;
-  --line:         #22362e;
-
-  --brand:        #56d6a4;
-  --brand-strong: #7ce3ba;
-  --brand-soft:   #143027;
-  --brand-ink:    #06211a;
-
-  --accent:       #e9a459;
-  --accent-soft:  #2a1f11;
-
-  --hill-1:       #0f3529;
-  --hill-2:       #144135;
-  --hill-3:       #1b5243;
-  --kaple:        #7fb79e;
-  --sky-a:        #0d1c17;
-  --sky-b:        #0a1310;
-
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / .4);
-  --shadow-md: 0 2px 6px rgb(0 0 0 / .45), 0 14px 34px -10px rgb(0 0 0 / .6);
-  --shadow-lg: 0 4px 12px rgb(0 0 0 / .5), 0 34px 64px -20px rgb(0 0 0 / .75);
   color-scheme: dark;
+  --bg: #121513;
+  --bg-alt: #171c19;
+  --surface: #1a201c;
+  --surface-2: #202822;
+  --ink: #edf2ee;
+  --ink-soft: #bbc6be;
+  --muted: #9caea1;
+  --line: #2d3830;
+  --brand: #85d4a4;
+  --brand-strong: #a2e4bc;
+  --brand-soft: #1e3025;
+  --brand-ink: #10271a;
+  --relief: url('../img/relief-vysker-dark.png');
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / .12);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / .18);
+  --shadow-lg: 0 24px 72px rgb(0 0 0 / .4);
 }
 
 /* --------------------------------------------------------------------------
@@ -153,9 +120,9 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.06;
-  letter-spacing: -.02em;
+  font-weight: 580;
+  line-height: 1.2;
+  letter-spacing: -.045em;
   margin: 0;
   text-wrap: balance;
 }
@@ -165,7 +132,7 @@ img, svg { display: block; max-width: 100%; }
 button { font: inherit; color: inherit; }
 
 a { color: var(--brand); text-underline-offset: .18em; text-decoration-thickness: 1px; }
-a:hover { color: var(--accent); }
+a:hover { color: var(--brand-strong); }
 
 :focus-visible {
   outline: 2.5px solid var(--accent);
@@ -200,22 +167,23 @@ a:hover { color: var(--accent); }
    3. Opakované prvky
    -------------------------------------------------------------------------- */
 .eyebrow {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: .6rem;
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: .1em;
+  gap: .65rem;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 450;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.4rem;
 }
 .eyebrow__dot {
-  width: .5rem;
-  height: .5rem;
+  width: .375rem;
+  height: .375rem;
+  flex: none;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in oklab, var(--accent) 22%, transparent);
+  background: var(--brand);
 }
 
 .btn {
@@ -228,7 +196,8 @@ a:hover { color: var(--accent); }
   gap: .55rem;
   padding: .72rem 1.3rem;
   border: 1px solid var(--btn-bd);
-  border-radius: 999px;
+  border-radius: var(--r-sm);
+  min-height: 46px;
   background: var(--btn-bg);
   color: var(--btn-fg);
   font-weight: 600;
@@ -239,7 +208,7 @@ a:hover { color: var(--accent); }
   transition: transform .2s var(--ease), box-shadow .25s var(--ease),
               background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
 }
-.btn:hover { transform: translateY(-2px); }
+.btn:hover { border-color: var(--brand); }
 .btn:active { transform: translateY(0); }
 
 .btn--primary {
@@ -258,7 +227,7 @@ a:hover { color: var(--accent); }
 .btn--ghost { --btn-bg: transparent; }
 .btn--ghost:hover { --btn-bd: var(--brand); color: var(--brand); }
 
-.btn--lg { padding: .95rem 1.8rem; font-size: var(--step-1); }
+.btn--lg { padding: .9rem 1.3rem; font-size: .9375rem; }
 
 .btn__arrow { width: 1.15em; height: 1.15em; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: translate .25s var(--ease); }
 .btn:hover .btn__arrow { translate: .2em 0; }
@@ -275,16 +244,17 @@ a:hover { color: var(--accent); }
   line-height: 1.5;
 }
 
-.section { padding-block: clamp(4rem, 9vw, 8rem); }
+.section { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
 
-.section__head { max-width: 46ch; margin-bottom: clamp(2rem, 4vw, 3.2rem); }
+.section__head { max-width: 65ch; margin-bottom: 2rem; }
+.section__head .eyebrow { margin-bottom: .7rem; }
 .section__title { font-size: var(--step-3); }
 .section__lead {
-  margin-top: 1.1rem;
+  margin-top: .7rem;
   color: var(--ink-soft);
-  font-size: var(--step-1);
-  line-height: 1.55;
-  max-width: 54ch;
+  font-size: var(--step-0);
+  line-height: 1.65;
+  max-width: 72ch;
 }
 
 .note {
@@ -293,7 +263,7 @@ a:hover { color: var(--accent); }
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: var(--step--1);
-  max-width: 62ch;
+  max-width: 72ch;
 }
 
 /* --------------------------------------------------------------------------
@@ -306,7 +276,7 @@ a:hover { color: var(--accent); }
   background: color-mix(in oklab, var(--bg) 82%, transparent);
   backdrop-filter: blur(14px) saturate(1.4);
   -webkit-backdrop-filter: blur(14px) saturate(1.4);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--line);
   transition: border-color .25s var(--ease), background-color .25s var(--ease);
 }
 .site-header.is-stuck {
@@ -328,22 +298,28 @@ a:hover { color: var(--accent); }
   color: var(--ink);
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: 1.22rem;
+  font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -.015em;
   margin-right: auto;
 }
 .brand:hover { color: var(--ink); }
 .brand__mark {
-  width: 2.1rem;
-  height: 2.1rem;
+  width: 3.5rem;
+  height: 2.625rem;
+  flex: none;
   display: grid;
   place-items: center;
-  border-radius: 9px;
-  background: var(--brand);
-  color: var(--brand-ink);
+  color: var(--brand);
 }
-.brand__mark svg { width: 78%; }
+.brand__mark svg { width: 100%; }
+
+@media (max-width: 400px) {
+  .site-header__inner { gap: .5rem; }
+  .site-header .brand { gap: .45rem; font-size: 1.25rem; }
+  .site-header .brand__mark { width: 3rem; height: 2.25rem; }
+  .site-header .header-tools { margin-left: 0; }
+}
 
 .nav {
   display: flex;
@@ -357,24 +333,25 @@ a:hover { color: var(--accent); }
   font-size: var(--step--1);
   letter-spacing: .01em;
   position: relative;
-  padding-block: .35rem;
+  padding-block: .8rem;
 }
 .nav > a::after {
   content: "";
   position: absolute;
   left: 0; right: 100%; bottom: 0;
-  height: 1.5px;
+  height: 2px;
   background: var(--accent);
   transition: right .25s var(--ease);
 }
 .nav > a:hover { color: var(--ink); }
-.nav > a:hover::after { right: 0; }
+.nav > a:hover::after, .nav > a[aria-current]::after { right: 0; }
+.nav > a[aria-current] { color: var(--ink); }
 
 .header-tools { display: flex; align-items: center; gap: .4rem; margin-left: .6rem; }
 
 .icon-btn {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: grid;
   place-items: center;
   border: 1px solid var(--line);
@@ -425,9 +402,10 @@ a:hover { color: var(--accent); }
     clip-path: inset(0 0 100% 0);
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
     transition: clip-path .35s var(--ease), opacity .25s var(--ease);
   }
-  .nav.is-open { clip-path: inset(0 0 0 0); opacity: 1; pointer-events: auto; }
+  .nav.is-open { clip-path: inset(0 0 0 0); opacity: 1; pointer-events: auto; visibility: visible; }
   .nav > a { padding: .95rem 0; border-bottom: 1px solid var(--line); font-size: var(--step-1); }
 }
 
@@ -437,76 +415,61 @@ a:hover { color: var(--accent); }
 .hero {
   position: relative;
   isolation: isolate;
-  /* Spodní odsazení musí být vyšší než silueta Vyskeře níž, jinak by text
-     a tlačítka skončily na tmavé zeleni a ztratily kontrast. */
-  padding-block: clamp(4rem, 11vw, 9rem) clamp(9rem, 24vw, 20rem);
   overflow: hidden;
+  border-bottom: 1px solid var(--line);
 }
-
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(80ch 50ch at 78% -10%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 65%),
-    linear-gradient(180deg, var(--sky-a), var(--sky-b) 72%);
+.hero__inner {
+  position: relative;
+  padding-block: clamp(3rem, 5.2vw, 5rem) clamp(3rem, 5vw, 4.5rem);
 }
-/* Vyskeř s kaplí. Výška je vždy menší než spodní odsazení hero sekce
-   (viz .hero výše), takže silueta nikdy nevleze pod text. */
-.hero__vysker {
-  position: absolute;
-  right: clamp(-1rem, 3vw, 6rem);
-  bottom: -1px;
-  height: clamp(110px, 20vw, 290px);
-  width: auto;
-}
-.vysker__kopec { fill: var(--hill-2); }
-.vysker__kaple { fill: var(--kaple); }
-
-/* Bližší hřebeny — překrývají patu kopce, aby vznikla hloubka */
-.hero__hills {
-  position: absolute;
-  inset: auto 0 -1px 0;
-  width: 100%;
-  height: clamp(26px, 3vw, 46px);
-}
-.hill--1 { fill: var(--hill-1); }
-.hill--2 { fill: var(--hill-3); opacity: .55; }
-
-.hero__inner { position: relative; }
-
+.hero__copy { position: relative; z-index: 1; width: 55%; }
 .hero__title {
   font-size: var(--step-4);
-  max-width: 14ch;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -.065em;
   margin-bottom: 1.6rem;
 }
-.hero__title em {
-  font-style: italic;
-  color: var(--brand);
-  position: relative;
+.hero__title em { font-style: normal; color: var(--brand); }
+.hero__lead {
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  line-height: 1.7;
 }
-.hero__title em::after {
-  content: "";
+.hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.8rem; }
+.hero__landscape {
   position: absolute;
-  left: -.04em; right: -.04em; bottom: .06em;
-  height: .1em;
-  background: color-mix(in oklab, var(--accent) 55%, transparent);
-  border-radius: 999px;
+  right: calc(-1 * var(--gutter) - 4%);
+  bottom: 1.5rem;
+  width: 77%;
+  aspect-ratio: 3 / 1;
+  background: var(--relief) center / contain no-repeat;
+  /* Zelená cesta, původní neutrální reliéf a teplá světla. */
+  filter: url('../img/relief-accent.svg#green');
+  mask-image: linear-gradient(90deg, transparent, #000 34%);
+  pointer-events: none;
   z-index: -1;
 }
-
-.hero__lead {
-  font-size: var(--step-1);
-  color: var(--ink-soft);
-  max-width: 52ch;
-  line-height: 1.6;
+@media (max-width: 960px) {
+  .hero__copy { width: 68%; }
+  .hero__landscape { width: 82%; right: -20%; opacity: .65; }
 }
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .8rem;
-  margin-top: 2.2rem;
+@media (max-width: 640px) {
+  .hero__inner { padding-top: 2.5rem; padding-bottom: 0; }
+  .hero__copy { width: 100%; }
+  .hero__title { font-size: clamp(2.25rem, 8.8vw, 3.5rem); }
+  .hero__lead { font-size: 1rem; }
+  .hero__landscape {
+    position: relative;
+    width: calc(100% + var(--gutter) * 2);
+    right: auto;
+    bottom: auto;
+    margin: 1.4rem calc(-1 * var(--gutter)) 0;
+    opacity: 1;
+    mask-image: linear-gradient(to top, transparent, #000 18%);
+  }
+  .hero .eyebrow { font-size: .625rem; letter-spacing: .025em; }
 }
 
 /* --------------------------------------------------------------------------
@@ -517,8 +480,8 @@ a:hover { color: var(--accent); }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .candidate { display: flex; }
@@ -530,15 +493,15 @@ a:hover { color: var(--accent); }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.2rem;
+  min-width: 0;
   width: 100%;
   padding: 1.5rem;
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-md);
   background: var(--surface);
   text-align: left;
-  overflow: hidden;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
 }
 .candidate__card::before {
   content: "";
@@ -553,8 +516,6 @@ a:hover { color: var(--accent); }
 /* Zvednutí a podbarvení jen u karet, které se dají otevřít
    (tlačítko „Více“ doplňuje JS těm, které mají vyplněné data-bio). */
 .candidate:has(.candidate__more) .candidate__card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
   border-color: color-mix(in oklab, var(--brand) 45%, var(--line));
 }
 .candidate:has(.candidate__more) .candidate__card:hover::before { opacity: 1; }
@@ -564,20 +525,12 @@ a:hover { color: var(--accent); }
 
 .candidate__badge {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  min-width: 1.9rem;
-  height: 1.9rem;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--surface-2);
+  top: 1.4rem;
+  right: 1.4rem;
   color: var(--muted);
-  font-family: var(--font-display);
-  font-size: .92rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: .75rem;
   font-variant-numeric: tabular-nums;
-  transition: background-color .25s var(--ease), color .25s var(--ease);
 }
 .candidate:has(.candidate__more) .candidate__card:hover .candidate__badge {
   background: var(--accent);
@@ -586,23 +539,18 @@ a:hover { color: var(--accent); }
 
 .candidate__avatar {
   position: relative;
-  width: 4.6rem;
-  height: 4.6rem;
+  width: 3rem;
+  height: 3rem;
   flex: none;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background:
-    radial-gradient(120% 120% at 30% 20%,
-      color-mix(in oklab, var(--brand) 26%, var(--surface-2)),
-      var(--surface-2));
+  border-radius: var(--r-sm);
+  background: var(--brand-soft);
   color: var(--brand);
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: .01em;
+  font-size: 1rem;
+  font-weight: 550;
   overflow: hidden;
-  box-shadow: inset 0 0 0 1px var(--line);
 }
 .candidate__avatar::after {
   content: attr(data-initials);
@@ -617,19 +565,26 @@ a:hover { color: var(--accent); }
   object-fit: cover;
 }
 
-.candidate__body { display: flex; flex-direction: column; gap: .3rem; }
+.candidate__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .35rem;
+  width: 100%;
+  flex: 1;
+}
 
 .candidate__name {
   font-family: var(--font-display);
-  font-size: var(--step-2);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -.015em;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-weight: 580;
+  line-height: 1.3;
+  letter-spacing: -.035em;
   color: var(--ink);
 }
 .candidate__meta { color: var(--muted); font-size: var(--step--1); }
 
-/* Telefon u kandidáta — uvádíme ho jen u těch, kdo o to stojí */
+/* Telefon u kandidáta - uvádíme ho jen u těch, kdo o to stojí */
 .candidate__phone {
   display: inline-flex;
   align-items: center;
@@ -662,7 +617,7 @@ a:hover { color: var(--accent); }
 }
 .candidate__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .8rem; }
 
-/* Tlačítko „Více o kandidátovi“ — doplňuje ho JS jen kartám s životopisem.
+/* Tlačítko „Více o kandidátovi“ - doplňuje ho JS jen kartám s životopisem.
    Pseudoprvek roztažený přes celou kartu dělá klikatelnou celou plochu,
    ale přístupné jméno i fokus zůstávají na skutečném <button>. */
 .candidate__more {
@@ -692,38 +647,21 @@ a:hover { color: var(--accent); }
    7. Patička
    -------------------------------------------------------------------------- */
 .site-footer {
-  background: var(--brand-strong);
-  color: color-mix(in oklab, #ffffff 88%, var(--brand));
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  background: var(--bg-alt);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-block: 2.5rem 1.5rem;
 }
-/* Patička je vždy tmavá — dělící linky proto počítáme z bílé, ne z tokenu --line */
-.site-footer { --line: color-mix(in oklab, #ffffff 16%, transparent); }
-
-.site-footer__inner {
-  display: grid;
-  gap: 1.8rem;
-  align-items: start;
-}
+.site-footer__inner { display: grid; gap: 1.5rem; align-items: start; }
+.brand--footer { margin-right: 0; }
+.site-footer__note { margin-top: .7rem; font-size: var(--step--1); }
+.site-footer__nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.site-footer__nav a { padding-block: .5rem; color: var(--ink-soft); text-decoration: none; font-size: var(--step--1); }
+.site-footer__nav a:hover { color: var(--brand); text-decoration: underline; }
+.site-footer__legal { padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: .75rem; }
 @media (min-width: 800px) {
   .site-footer__inner { grid-template-columns: 1fr auto; }
   .site-footer__legal { grid-column: 1 / -1; }
-}
-
-.brand--footer { color: #fff; margin-right: 0; }
-.brand--footer:hover { color: #fff; }
-.brand--footer .brand__mark { background: rgb(255 255 255 / .14); color: #fff; }
-
-.site-footer__note { margin-top: .7rem; opacity: .78; font-size: var(--step--1); max-width: 40ch; }
-
-.site-footer__nav { display: flex; flex-wrap: wrap; gap: 1.3rem; }
-.site-footer__nav a { color: inherit; text-decoration: none; font-size: var(--step--1); opacity: .82; }
-.site-footer__nav a:hover { color: #fff; opacity: 1; text-decoration: underline; }
-
-.site-footer__legal {
-  padding-top: 1.6rem;
-  border-top: 1px solid var(--line);
-  font-size: .8rem;
-  opacity: .68;
 }
 
 /* --------------------------------------------------------------------------
@@ -829,7 +767,7 @@ body.is-locked { overflow: hidden; }
    10. Tisk
    -------------------------------------------------------------------------- */
 @media print {
-  .site-header, .hero__bg, .candidate__more, .modal, .site-footer__nav { display: none !important; }
+  .site-header, .hero__landscape, .candidate__more, .modal, .site-footer__nav { display: none !important; }
   body { background: #fff; color: #000; }
   .candidate__card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none; }
 }
@@ -839,19 +777,29 @@ body.is-locked { overflow: hidden; }
    -------------------------------------------------------------------------- */
 .page-hero {
   position: relative;
-  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(2.5rem, 5vw, 4rem);
-  background:
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--brand-soft) 70%, var(--bg)),
-      var(--bg));
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3.5rem);
   border-bottom: 1px solid var(--line);
 }
+.page-hero > .shell, .section:has(.program) > .shell, .section:has(.closing) > .shell {
+  max-width: 880px;
+}
+.page-hero__back {
+  display: inline-flex;
+  gap: .6rem;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 1.6rem;
+  font-size: .8125rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.page-hero__back svg { width: 1rem; height: 1rem; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .page-hero__lead {
   margin-top: 1.4rem;
-  max-width: 56ch;
+  max-width: 72ch;
   color: var(--ink-soft);
   font-size: var(--step-0);
-  line-height: 1.55;
+  line-height: 1.7;
 }
 
 /* Jméno kandidáta je hlavní nadpis stránky, ostatní text stojí pod ním */
@@ -874,7 +822,7 @@ body.is-locked { overflow: hidden; }
   font-size: var(--step--1);
 }
 
-/* Slib — vytažený nad ostatní text, ať ho nikdo nepřehlédne */
+/* Slib - vytažený nad ostatní text, ať ho nikdo nepřehlédne */
 .pledge {
   margin-top: clamp(2rem, 4vw, 3rem);
   padding: clamp(1.4rem, 3vw, 2.2rem);
@@ -883,7 +831,7 @@ body.is-locked { overflow: hidden; }
   border-left-color: var(--accent);
   border-radius: var(--r-lg);
   background: var(--accent-soft);
-  max-width: 62ch;
+  max-width: 72ch;
 }
 .pledge__title {
   font-family: var(--font-display);
@@ -894,7 +842,7 @@ body.is-locked { overflow: hidden; }
 .pledge p { margin-top: .8rem; color: var(--ink-soft); line-height: 1.65; }
 .pledge p + p { margin-top: .6rem; }
 
-/* Programové body — pořadí v seznamu nic neznamená, proto žádná čísla
+/* Programové body - pořadí v seznamu nic neznamená, proto žádná čísla
    ani zvýrazňování jednotlivých bodů. */
 .program {
   list-style: none;
@@ -902,18 +850,15 @@ body.is-locked { overflow: hidden; }
   padding: 0;
   max-width: 62rem;
   display: grid;
-  gap: clamp(1rem, 2vw, 1.4rem);
+  gap: 0;
 }
 .program__item {
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1rem 1.15rem;
-  padding: clamp(1.25rem, 2.6vw, 1.9rem);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  gap: .9rem 1.25rem;
+  padding-block: 1.8rem;
+  border-bottom: 1px solid var(--line);
 }
 .program__mark {
   grid-row: 1 / span 2;
@@ -923,8 +868,9 @@ body.is-locked { overflow: hidden; }
   margin-top: .55rem;
   border-radius: 50%;
   background: var(--brand);
-  box-shadow: 0 0 0 4px color-mix(in oklab, var(--brand) 16%, transparent);
+
 }
+.program__item:first-child { padding-top: 0; }
 .program__title {
   align-self: start;
   font-size: var(--step-1);
@@ -947,12 +893,12 @@ body.is-locked { overflow: hidden; }
 /* Slovo kandidáta pod programovými body, bez rámečku */
 .program-close {
   margin-top: clamp(2rem, 4vw, 3rem);
-  max-width: 62ch;
+  max-width: 72ch;
 }
 .program-close p { color: var(--ink-soft); line-height: 1.68; }
 .program-close p + p { margin-top: .8rem; }
 
-/* Uzavření stránky — kontakt a cesta zpět */
+/* Uzavření stránky - kontakt a cesta zpět */
 .closing {
   max-width: 62rem;
   padding: clamp(1.6rem, 3.5vw, 2.6rem);
@@ -984,6 +930,29 @@ body.is-locked { overflow: hidden; }
   z-index: 1;
 }
 .candidate__program:hover { text-decoration: underline; }
+.candidate__body .candidate__program {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  min-height: 44px;
+  width: 100%;
+  justify-content: space-between;
+  font-size: .8125rem;
+  font-weight: 500;
+}
+.candidate__phone { min-height: 32px; }
+.candidate:has(.candidate__program) .candidate__card:hover {
+  border-color: color-mix(in oklab, var(--brand) 45%, var(--line));
+  background: var(--bg-alt);
+}
+@media (max-width: 960px) { .candidates { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .candidates { grid-template-columns: 1fr; gap: .75rem; }
+  .candidate__card { flex-direction: row; gap: 1rem; padding: 1.25rem; }
+  .candidate__body { min-width: 0; padding-top: .1rem; }
+  .candidate__name { padding-right: 1rem; font-size: 1.2rem; }
+  .candidate__badge { top: 1.2rem; right: 1rem; font-size: .6875rem; }
+  .candidate__body .candidate__program { font-size: .75rem; gap: .5rem; }
+}
 .candidate__program svg {
   width: 1em; height: 1em;
   flex: none;
