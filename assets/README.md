@@ -1,11 +1,11 @@
 # Vizuální podklady
 
-`img/chapel.svg` obsahuje vektorový znak převzatý z
-[moderního náhledu Vyskře](https://www.pavel.cool/vysker-modern/).
-Geometrie kapličky je shodná s originálem, barva je zelená.
-Hlavičky a patičky používají symbol `#chapel` z tohoto souboru a přebírají
-zelenou barvu aktuálního motivu. `img/favicon.svg` je jeho zjednodušená
-varianta ze stejného webu se zeleným pozadím.
+`img/chapel-cutout.png` obsahuje kapličku z obrázku `kaplicka.png`, který
+uživatel dodal 1. října 2026. Výřez bez nápisu a pozadí byl připraven
+vestavěným nástrojem ImageGen. [Použité zadání](logo-prompt.txt) popisuje
+zachování architektury a průhledných otvorů.
+Hlavičky a patičky používají alfa kanál výřezu jako CSS masku a přebírají
+zelenou barvu aktuálního motivu. Stejný PNG soubor slouží jako ikona webu.
 
 Písmo Geist a Geist Mono pochází ze stejné lokální sady jako projekt
 `obecni-web`. Licenční podmínky SIL Open Font License jsou v `fonts/LICENSE.txt`.

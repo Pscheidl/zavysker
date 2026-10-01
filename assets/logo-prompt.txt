@@ -1,0 +1,5 @@
+Tool: built-in ImageGen
+Input: user-supplied kaplicka.png
+Output: img/chapel-cutout.png
+
+Edit the provided exact logo, do not redesign it. Create a crisp one-color DARK GREEN (#26734d) cutout of ONLY its chapel and the curved ground line. Remove the 'Za Vyskeř' text completely. Replace every original white/cream logo pixel above the text with dark green ink. Remove every originally green background pixel to true alpha transparency, including inside all windows, bell tower openings, door recess, fine architectural separations and below/above the curved ground line. Important: the two slim arched side windows and three open arches in the tower must be EMPTY TRANSPARENT HOLES, not filled ink. Preserve the original frontal chapel architecture, cross, ball below the cross, onion cupola, broad hipped roof, facade and door chevrons faithfully. Use solid flat dark green ink with NO texture, NO rough edges, NO noise, NO speckles, NO shadows, NO outlines around the cutout. Output on a truly transparent background, tightly framed with 4% transparent margin around the chapel and ground line. This is a clean production logo extraction from the source image.
