@@ -24,7 +24,7 @@
 <link rel="icon" href="assets/img/chapel-cutout.png?v=20261001" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/chapel-cutout.png?v=20261001">
 <link rel="preload" href="/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=20261001-6">
+<link rel="stylesheet" href="assets/css/style.css?v=20261007-3">
 
 <!-- Nastaví motiv ještě před vykreslením, aby stránka neproblikla -->
 <script>
@@ -68,6 +68,7 @@
     <nav class="nav" id="nav" aria-label="Hlavní navigace">
       <a href="#kandidati">Poznejte nás</a>
       <a href="program/">Program</a>
+      <a href="#letak">Volební leták</a>
     </nav>
 
     <div class="header-tools">
@@ -121,6 +122,79 @@
         </div>
       </div>
       <div class="hero__landscape" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Volební leták -->
+  <section class="section leaflet" id="letak" aria-labelledby="leaflet-title">
+    <div class="shell leaflet__layout">
+      <div class="leaflet__letter">
+        <header class="section__head">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Volební leták</p>
+          <h2 class="section__title" id="leaflet-title">Hlavou <span>i srdcem</span></h2>
+          <p class="section__lead">Společné slovo pěti kandidátů sdružení Za Vyskeř.</p>
+        </header>
+
+        <div class="leaflet__text">
+          <p class="leaflet__salutation">Vážení spoluobčané,</p>
+          <p>
+            jako kandidáti do zastupitelstva naší obce Vám nabízíme
+            <strong>transparentnost a otevřenost.</strong>
+          </p>
+          <p>
+            Chceme, aby každý viděl, jak obec hospodaří. Byli bychom rádi,
+            aby si každý občan udělal svůj vlastní názor a byl nedílnou součástí
+            dění v obci.
+          </p>
+          <p><strong>Nadřazujeme zájem obce nad individuálním prospěchem.</strong></p>
+          <p>
+            Každý dobrý hospodář má rád svůj statek. A my chceme být dobrými
+            správci a hospodáři obecního majetku.
+          </p>
+          <p class="leaflet__invitation">Přijďte nás tedy podpořit!</p>
+        </div>
+
+        <div class="leaflet__signatures">
+          <p class="leaflet__label" id="leaflet-signatures-label">Podepsaní</p>
+          <ul class="leaflet__names" aria-labelledby="leaflet-signatures-label" role="list">
+            <li>Pavel Pscheidl</li>
+            <li>Petr Rubeš</li>
+            <li>Tereza Kozáková</li>
+            <li>Michaela Holá</li>
+            <li>Zdeněk Pařízek</li>
+          </ul>
+        </div>
+        <p class="leaflet__note">
+          Leták podepisují vybraní kandidáti sdružení Za Vyskeř.
+          Nejde o oznámení obecního úřadu.
+        </p>
+      </div>
+
+      <aside class="leaflet__aside" aria-labelledby="leaflet-election-title">
+        <div class="leaflet__election">
+          <h3 id="leaflet-election-title">Přijďte k volbám</h3>
+          <p class="leaflet__date">9. a 10. října 2026</p>
+          <dl class="leaflet__times">
+            <div>
+              <dt>Pátek <time datetime="2026-10-09">9. října</time></dt>
+              <dd>od 14 do 22 hodin</dd>
+            </div>
+            <div>
+              <dt>Sobota <time datetime="2026-10-10">10. října</time></dt>
+              <dd>od 8 do 14 hodin</dd>
+            </div>
+          </dl>
+          <p class="leaflet__place">Sál obecního úřadu<br>Vyskeř 50</p>
+        </div>
+        <a class="leaflet__preview" href="assets/img/letak-vysker.png">
+          <img src="assets/img/letak-vysker.png" width="1448" height="2048"
+               loading="lazy" decoding="async" alt="Náhled volebního letáku Hlavou i srdcem">
+          <span>
+            Otevřít celý leták
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </aside>
     </div>
   </section>
 
@@ -332,6 +406,7 @@
     <nav class="site-footer__nav" aria-label="Patička">
       <a href="#kandidati">Kandidáti</a>
       <a href="program/">Program</a>
+      <a href="#letak">Volební leták</a>
     </nav>
 
     <p class="site-footer__legal">

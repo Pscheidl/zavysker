@@ -644,6 +644,123 @@ a:hover { color: var(--brand-strong); }
 }
 .candidate__card:hover .candidate__more svg { translate: .25em 0; }
 
+/* Volební leták mezi úvodem a kandidátní listinou */
+.leaflet {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--line);
+}
+.leaflet__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 350px);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+.leaflet__letter { min-width: 0; }
+.leaflet .section__title { font-size: clamp(2.5rem, 4.5vw, 4rem); }
+.leaflet .section__title span { color: var(--brand); }
+.leaflet__text {
+  max-width: 60ch;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.leaflet__text p + p { margin-top: 1rem; }
+.leaflet__text strong { color: var(--ink); font-weight: 600; }
+.leaflet__salutation { color: var(--ink); font-weight: 600; }
+.leaflet__text .leaflet__invitation {
+  margin-top: 1.5rem;
+  color: var(--brand);
+  font-size: var(--step-2);
+  font-weight: 580;
+  letter-spacing: -.025em;
+}
+.leaflet__signatures {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.leaflet__label { color: var(--muted); font-size: .8125rem; }
+.leaflet__names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem 1.5rem;
+  list-style: none;
+  margin: .75rem 0 0;
+  padding: 0;
+  color: var(--ink);
+  font-weight: 550;
+}
+.leaflet__note {
+  max-width: 60ch;
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: .8125rem;
+}
+.leaflet__aside { display: grid; gap: 1.5rem; }
+.leaflet__election {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+.leaflet__election h3 { font-size: var(--step-1); letter-spacing: -.025em; }
+.leaflet__date {
+  margin-top: .5rem;
+  color: var(--brand);
+  font-size: clamp(1.4rem, 2.1vw, 1.75rem);
+  font-weight: 580;
+  letter-spacing: -.035em;
+}
+.leaflet__times { display: grid; gap: 1rem; margin: 1.5rem 0; }
+.leaflet__times dt { color: var(--ink); font-weight: 550; }
+.leaflet__times dd { margin: .1rem 0 0; color: var(--ink-soft); }
+.leaflet__place {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--step--1);
+}
+.leaflet__preview {
+  display: grid;
+  justify-items: center;
+  gap: .65rem;
+  padding: .25rem;
+  color: var(--brand);
+  font-size: var(--step--1);
+  text-decoration: none;
+}
+.leaflet__preview img {
+  width: 208px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: var(--shadow-md);
+}
+.leaflet__preview span {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 44px;
+}
+.leaflet__preview:hover span { text-decoration: underline; }
+.leaflet__preview svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 800px) {
+  .leaflet__layout { grid-template-columns: minmax(0, 1fr); }
+  .leaflet__aside { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+}
+@media (max-width: 520px) {
+  .leaflet__aside { grid-template-columns: minmax(0, 1fr); }
+  .leaflet__text { font-size: 1rem; }
+  .leaflet__names { column-gap: 1rem; font-size: .9375rem; }
+}
+
 /* --------------------------------------------------------------------------
    7. Patička
    -------------------------------------------------------------------------- */
